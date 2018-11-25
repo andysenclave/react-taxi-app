@@ -1,0 +1,11 @@
+section.modal {
+  position: fixed;
+  width: 60vw;
+  height: 50vh;
+  background: white;
+  z-index: 20;
+  padding: 25px;
+  box-shadow: 0px 10px 65px #b7b7b7;
+  left: 20vw;
+  top: 25vh;
+}
