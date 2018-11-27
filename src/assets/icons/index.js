@@ -11,6 +11,7 @@ import pin from './pin.png';
 import taxiPin from './taxi_top.png';
 import carPin from './car_top.png';
 import inactiveCarPin from './inactive_cab.png';
+import close from './close.png';
 
 export {
   taxi,
@@ -25,5 +26,6 @@ export {
   pin,
   taxiPin,
   carPin,
-  inactiveCarPin
+  inactiveCarPin,
+  close,
 };

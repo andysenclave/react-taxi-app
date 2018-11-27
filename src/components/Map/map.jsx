@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import ReactDOM from 'react-dom';
 import CustomMarker from './marker';
@@ -53,18 +54,23 @@ export class MapContent extends Component {
     }
   }
 
-  updateMapHeight(ref) {
-    const { top } = ReactDOM.findDOMNode(ref).getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    ref.style.height = `${windowHeight - top}px`;
+  updateMapHeight(ref, height) {
+    if(height) {
+      ref.style.height = `${height}`;
+    } else {
+      const { top } = ReactDOM.findDOMNode(ref).getBoundingClientRect();
+      // eslint-disable-next-line
+      const windowHeight = window.innerHeight;
+      ref.style.height = `${windowHeight - top}px`;
+    }
   }
 
   componentDidMount(){
-    this.updateMapHeight(this.refs.mapWrapper);
+    this.updateMapHeight(this.refs.mapWrapper, this.props.height);
   }
 
   render() {
-    const { cars, google } = this.props;
+    const { cars, google, showCurrentLocation, center } = this.props;
     const CabMarkers = this.generateCabMarkers(cars, google);
     return (
       <section className='map-wrapper' ref='mapWrapper'>
@@ -72,21 +78,29 @@ export class MapContent extends Component {
           google={google}
           zoom={13}
           style={mapStyles}
-          initialCenter={this.props.center}
+          initialCenter={center}
         >
           { CabMarkers }
-          <CustomMarker
-            name='Your position'
-            coordinate={this.props.center}
-            google={google}
-            loaded={true}
-            size={42}
-          />
+          {showCurrentLocation ? 
+            (<CustomMarker
+              name='Your position'
+              coordinate={this.props.center}
+              google={google}
+              loaded={true}
+              size={42}
+            />) : ''
+          }
         </Map>
       </section>
     );
   }
-}
+};
+
+MapContent.propTypes = {
+  cars: PropTypes.array.isRequired,
+  showCurrentLocation: PropTypes.bool,
+  center: PropTypes.object.isRequired
+};
 
 export default GoogleApiWrapper({
   apiKey

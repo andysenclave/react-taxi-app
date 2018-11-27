@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Marker } from 'google-maps-react';
 import { pin } from '../../assets/icons';
 
@@ -15,5 +16,14 @@ const CustomMarker = props => (
     }}
   />
 );
+
+CustomMarker.propTypes = {
+  name: PropTypes.string.isRequired,
+  coordinate: PropTypes.object.isRequired,
+  icon: PropTypes.string,
+  google: PropTypes.object.isRequired,
+  loaded: PropTypes.bool.isRequired,
+  size: PropTypes.number
+};
 
 export default CustomMarker;

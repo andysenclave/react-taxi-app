@@ -1,3 +1,10 @@
+
+.loader {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
 .app {
   display: flex;
   width: 100vw;
@@ -9,10 +16,6 @@
 
 .app > * {
   height: 100%;
-}
-
-.app .loader {
-  flex: 6;
 }
 
 .app aside.navigation-bar {
@@ -73,12 +76,62 @@ aside.navigation-bar a.map-link:hover {
   display: flex;
   flex-wrap: wrap;
 }
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .app {
+      flex-direction: column-reverse;
+    }
 
-/* .app {
-  display: block;
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
-  font-family: 'Noto Sans SC', sans-serif;
-} */
+    aside.navigation-bar a:first-child {
+      margin-top: 0px;
+    }
+
+    .app aside.navigation-bar {
+      flex-direction: row;
+    }
+
+    aside.navigation-bar a {
+      width: 50%;
+    }
+
+    .app main.wrapper {
+      flex: 16;
+      overflow-x: hidden;
+    }
+    header.filter-container {
+      overflow-x: scroll;
+    }
+}
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .app {
+      flex-direction: column-reverse;
+    }
+
+    aside.navigation-bar a:first-child {
+      margin-top: 0px;
+    }
+
+    .app aside.navigation-bar {
+      flex-direction: row;
+    }
+
+    aside.navigation-bar a {
+      width: 50%;
+    }
+
+    .app main.wrapper {
+      flex: 16;
+      overflow-x: hidden;
+    }
+
+    header.filter-container {
+      overflow-x: scroll;
+    }
+}

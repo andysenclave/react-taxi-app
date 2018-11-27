@@ -4,14 +4,15 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import store, { history } from './store';
 import './index.css';
-import App from './App.jsx';
+import App from './App';
 
+// eslint-disable-next-line
 const rootDom = document.getElementById('root');
 
 ReactDOM.render((
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <App />
-      </ConnectedRouter>
+    </ConnectedRouter>
   </Provider>
 ), rootDom);

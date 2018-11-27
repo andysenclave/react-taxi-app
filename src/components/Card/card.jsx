@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { taxi, car, inactiveTaxi, inactiveCar } from '../../assets/icons';
 import './card.css';
 
@@ -55,11 +56,12 @@ const Card = props => {
     fuel,
     state,
     interior,
-    exterior 
+    exterior,
+    onClick 
   } = props;
   
   return (
-    <section className={`card ${provider}`}>
+    <section className={`card ${provider}`} onClick={() => onClick()}>
       <section className='image-container'>
         <img src={getCarIcon(provider, status)} alt="Car image"/>
       </section>
@@ -86,6 +88,21 @@ const Card = props => {
       </section>
     </section>
   )
+};
+
+Card.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  provider: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  type: PropTypes.string,
+  vin: PropTypes.string,
+  engineType: PropTypes.string,
+  fuel: PropTypes.number,
+  state: PropTypes.string,
+  interior: PropTypes.string,
+  exterior: PropTypes.string,
 };
 
 export default Card;

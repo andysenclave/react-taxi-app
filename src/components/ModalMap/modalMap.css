@@ -1,3 +1,13 @@
+section.modalContainer {
+  position: fixed;
+  z-index: 19;
+  background: #0000007d;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
 section.modal {
   position: fixed;
   width: 60vw;
@@ -8,4 +18,46 @@ section.modal {
   box-shadow: 0px 10px 65px #b7b7b7;
   left: 20vw;
   top: 25vh;
+  overflow: hidden;
+  padding-top: 40px;
+}
+
+.close-modal {
+  display: inline-block;
+  background: url('../../assets/icons/close.png') no-repeat;
+  width: 24px;
+  height: 24px;
+  z-index: 29;
+  background-size: cover;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    section.modal {
+      top: 5vh;
+      left: 5vw;
+      width: 75vw;
+      height: 82vh;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    section.modal {
+      top: 5vh;
+      left: 5vw;
+      width: 75vw;
+      height: 82vh;
+    }
+
 }

@@ -9,7 +9,7 @@ class MapContainer extends Component {
     const renderMap = cars.length > 0;
     return(
       <div>
-        { renderMap ? (<Map cars={cars} center={currentLocation}/>) : ''}        
+        { renderMap ? (<Map cars={cars} showCurrentLocation={true} center={currentLocation}/>) : ''}        
       </div>
     );
   } 

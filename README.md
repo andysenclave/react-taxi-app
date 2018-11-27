@@ -1,44 +1,73 @@
+#mytaxi-test-frontend
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Please start the server before proceeding further
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+To install all the app dependencies
 
 ### `npm start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### `npm lint`
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the lint runner to check for linting errors<br>
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### `Guide to the app`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Goals
 
-### `npm run eject`
+* Task 1: Retrieving Data & List
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Task 2: Extend data to a map
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Implementation
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* The app uses to `Redux` for state management, the data is loaded once during the app load and persists throughout the navigation of the app
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* No external libraries are used for styling and design of the app, I have used my own custom styles to achieve the design
 
-## Learn More
+* More Information:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  1) List of cars - the data from both Car2Go and My Taxi api is listed down in cards, where each card contains vehicle specific informations with visual explanation,
+  2) Map - where both types of cabs are geo positioned using google map api (my personal api authentication key is used, which can be changed in the app.config file listed under constants folder)
+  3) `Blue` color is used to uniquely identify - car2go cars both in map and in the list,
+  4) `Yellow` color is used to uniquely identify - mytaxi cars both in map and in the list,
+  5) `Grey` color is used to signify inactive cars, 
+  6) To keep the data synchronous, car2go data contains two parameters interior car condition and exterior car condition if both of them results as 'UNACCEPTABLE' it is considered as INACTIVE, whereas mytaxi car data has a specific parameter called state which results to 'INACTIVE' in some cases,
+  7) The fuel value has a visual representation of three stages - empty, half-full and full,
+  8) Inactive cars has visual representation in the cards,
+  9) The state, interior and exterior conditions are marked by a tick for good and cross for unacceptable status in the cards,
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `Filter`
+
+* Custom filters are added -
+
+  1) Filter to see specific type of cars - All, Car2Go, MyTaxi
+  2) Filter to see specific state of cars - All, Active, Inactive
+
+  Filters apply to both the list and the map, i.e., we can used them to filter the data and see specific data in the list or in the map.
+
+### `Modal`
+
+* Clicking on a card individually locates the specific cab in the map rendered inside a custom modal
+
+### `Mobile`
+
+* The app has a minimal mobile view, not too sassy, with a nav-bar at the bottom
+* The filter bar at the top is horizontally scrollable
+
+
+##Please share your feedback with me at andysenclave@gmail.com, hope you like it :-)
